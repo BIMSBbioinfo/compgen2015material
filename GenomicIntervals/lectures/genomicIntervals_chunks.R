@@ -173,6 +173,15 @@ covs
 ## ---- getCoverageFromBam ---
 covs=coverage(bamfile, param=param) # get coverage vectors
 
+
+## ---- getRleFromBigWig ---
+library(rtracklayer)
+# File from ENCODE ChIP-seq tracks
+bwFile="../data/wgEncodeHaibTfbsA549.chr21.bw"
+bw.gr=import(bwFile, which=promoter.gr) # get coverage vectors
+bw.gr
+
+
 ## ---- getViews ---
 myViews=Views(covs,as(promoter.gr,"RangesList")) # get subsets of coverage
 

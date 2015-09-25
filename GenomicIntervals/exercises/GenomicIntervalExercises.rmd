@@ -1,0 +1,43 @@
+---
+title: 'Genomic Intervals and R: Exercises'
+author: "Altuna Akalin"
+date: "22 Sep 2015"
+output: 
+  html_document:
+          toc: true
+          toc_depth: 1
+          number_sections: true
+---
+
+
+
+# The setup
+
+Set your working directory to the source file location in RStudio top menu:
+
+'Session > Set Working Directory > To Source File Location'
+
+if you have done it correctly you should see this script when you type dir()
+
+
+```
+> dir()
+[1] "GenomicInterval.exercises.html"
+```
+
+# Operations on Genomic Intervals with GenomicRanges package
+
+##
+Create a GRanges object using the information in the table below:
+
+| chr  | start | end  |strand | score | 
+| :--- |:------| :-----| :-----|:-----|
+| chr1 | 10000 | 10300 |  +    | 10 |
+| chr1 | 11100 | 11500 |  -    | 20 |
+| chr2 | 20000 | 10030 |  +    | 15 |
+
+
+# Dealing with mapped high-throughput sequencing reads
+
+# Dealing with contiguous scores over the genome
+
