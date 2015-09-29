@@ -164,7 +164,7 @@ counts=countBam(bamfile, param=param)
 
 ## ---- readGAlignments ----
 library(GenomicAlignments)
-alns <- readGAlignmentsFromBam(bamfile, param=param)
+alns <- readGAlignments(bamfile, param=param)
 
 ## ---- getCoverageFromAln ---
 covs=coverage(alns) # get coverage vectors
@@ -172,6 +172,26 @@ covs
 
 ## ---- getCoverageFromBam ---
 covs=coverage(bamfile, param=param) # get coverage vectors
+
+
+## ---- readChrbyChr
+library(GenomicAlignments)
+chrs=c("chr21")
+for( chr in chrs){
+  
+  
+  
+  # get the parameters to scan the bam file
+  # this this should read everthing in a given chr
+  param <- ScanBamParam(which=GRanges(seqnames=chr,
+                                      IRanges(start=1L,end=500000000L)
+  ))
+  alns <- readGAlignments(signal, param=param) # see ?readGAlignments
+  aln.df <- as.data.frame(alns) # get data.frame
+  aln.gr <- as(alns,"GRanges") # get GRanges
+  
+}
+
 
 
 ## ---- getRleFromBigWig ---

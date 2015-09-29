@@ -37,7 +37,24 @@ Create a GRanges object using the information in the table below:
 | chr2 | 20000 | 10030 |  +    | 15 |
 
 
+##
+Import mouse (mm9 assembly) CpG islands and refseq genes from UCSC browser as GRanges objects.
+
+
+##
+Get promoters of refseq genes and calculate what percentage of them overlap with CpG islands.
+
+## 
+Plot the distribution of CpGi island lengths for CpG islands that overlap with the 
+promoters.
+
+##
+get cannonical peaks for Sp1
+
 # Dealing with mapped high-throughput sequencing reads
+
+## 
+Count the reads overlapping with cannonical Sp1 peaks
 
 # Dealing with contiguous scores over the genome
 

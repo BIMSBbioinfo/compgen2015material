@@ -2,14 +2,12 @@
 title: "Genomic Intervals and R"
 author: "Altuna Akalin"
 date: "12 Aug 2015"
-output: html_document
+output: 
+  html_document:
+          toc: true
+          toc_depth: 1
+          number_sections: true
 ---
-
-A considerable time in computational genomics is spent on overlapping different features of the genome. For example, you may want to overlap transcription factor binding sites with CpG islands or promoters to quantify what percentage of binding sites overlap with your regions of interest. Overlapping mapped reads from high-throughput sequencing experiments with genomic features such as exons, promoters, enhancers can also be classified as operations on genomic intervals. You can think of a million other ways that involves overlapping two sets of different features on the genome. This chapter aims to show how to do analysis involving operations on genomic intervals.
-
-
-# Operations on Genomic Intervals with GenomicRanges package
-[Bioconductor](http://bioconductor.org) project has a dedicated package called [**GenomicRanges**](http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html) to deal with genomic intervals. In this section, we will provide use cases involving operations on genomic intervals. The main reason we will stick to this package is that it provides tools to do overlap operations. However package requires that users operate on specific data types that are conceptually similar to a tabular data structure implemented in a way that makes overlapping and related operations easier. The main object we will be using is called GRanges object and we will also see some other related objects from the GenomicRanges package.
 
 ```{r,setup,echo=FALSE}
 library(knitr)
@@ -19,6 +17,25 @@ library(captioner)
 fig_nums <- captioner()
 
 ```
+
+A considerable time in computational genomics is spent on overlapping different 
+features of the genome. Each feature can be represented with a genomic interval 
+within the chromosomal coordinate system. In addition, each interval can carry 
+different sorts of information. You can have exon coordinates or transcription 
+factor binding sites just represents an interval. On the other hand,
+you can have basebair resolution, continuous scores over the genome such as read coverage or 
+scores could be associated with only certain bases such as in the case of CpG 
+methylation (See `r fig_nums("gintsum",display="cite")`). Typically, you will need to overlap intervals on interest with other features of 
+the genome again represented as intervals. For example, you may want to overlap 
+transcription factor binding sites with CpG islands or promoters to quantify what percentage of binding sites overlap with your regions of interest. For e To achieve those goals, you will need to overlap genomic intervals. Overlapping mapped reads from high-throughput sequencing experiments with genomic features such as exons, promoters, enhancers can also be classified as operations on genomic intervals. You can think of a million other ways that involves overlapping two sets of different features on the genome. This chapter aims to show how to do analysis involving operations on genomic intervals.
+ ![Rle](../nonR_Figures/genomeIntervalSummary.png) 
+ 
+ `r fig_nums("gintsum","Summary of genomic intervals with different kinds of information") ` 
+
+# Operations on Genomic Intervals with GenomicRanges package
+[Bioconductor](http://bioconductor.org) project has a dedicated package called [**GenomicRanges**](http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html) to deal with genomic intervals. In this section, we will provide use cases involving operations on genomic intervals. The main reason we will stick to this package is that it provides tools to do overlap operations. However package requires that users operate on specific data types that are conceptually similar to a tabular data structure implemented in a way that makes overlapping and related operations easier. The main object we will be using is called GRanges object and we will also see some other related objects from the GenomicRanges package.
+
+
 
 ## How to create and manipulate a GRanges object
 
@@ -62,11 +79,11 @@ Now we will show how to use other packages to automatically obtain the data in G
 
 
 
-## Finding regions that (does/does not) overlap with another set of regions
+## Finding regions that do/do no overlap with another set of regions
 
 This is one of the most common tasks in genomics. Usually, you have a set of regions that you are interested in and you want to see if they overlap with another set of regions or see how many of them overlap. A good example is transcription factor binding sites determined by [ChIP-seq](http://en.wikipedia.org/wiki/ChIP-sequencing) experiments. In these types of experiments and followed analysis, one usually ends up with genomic regions that are bound by transcription factors. One of the standard next questions would be to annotate binding sites with genomic annotations such as promoter,exon,intron and/or CpG islands. Below is a demonstration of how transcription factor binding sites can be annotated using CpG islands. First, we will get the subset of binding sites that overlap with the CpG islands. In this case, binding sites are ChIP-seq peaks.
 
-We can find the subset of peaks that overlap with the CpG islands using subsetByoverlaps() function. You will also see another way of converting **data frames** to **GRanges**.
+We can find the subset of peaks that overlap with the CpG islands using **subsetByoverlaps()** function. You will also see another way of converting **data frames** to **GRanges**.
 
 ```{r,findPeakwithCpGi}
 
