@@ -195,11 +195,14 @@ bwFile="../data/wgEncodeHaibTfbsA549.chr21.bw"
 bw.gr=import(bwFile, which=promoter.gr) # get coverage vectors
 bw.gr
 
+
+
 ## ---- BigWigCov ---
 cov.bw=coverage(bw.gr,weight = "score")
 
 # or get this directly from
 cov.bw=import(bwFile, which=promoter.gr,as = "RleList")
+
 
 ## ---- getViews ---
 myViews=Views(cov.bw,as(promoter.gr,"RangesList")) # get subsets of coverage
@@ -217,30 +220,6 @@ head(
 
 # get the max of the views
 head(
-  viewMeans(myViews[[1]])
+  viewMaxs(myViews[[1]])
 )
 
-
-
-
-
-## ---- ggbio ----
-
-# plot ideogram
-
-# plot CpG islands accross the genome
-
-
-## ---- genomation1 ----
-
-# get summary of read coverage across promoters
-
-# look inside the data
-
-## ---- genomationHeat ----
-
-# make a heatmap
-
-## ---- genomationMeta ----
-
-# make a meta plot

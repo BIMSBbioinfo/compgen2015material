@@ -82,7 +82,7 @@ pull the data out of UCSC browser. Use SP1 ChIP-seq data
 ("wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam" ) to create an average profile of read coverage around TSSes. Following that, visualize the read coverage with a heatmap. **HINT**: All of these possible using `genomation` package functions.
 
 ##
-Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K4me1 ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.
+Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K27ac ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.
 
 ## 
-Visualize one of the regions using `Gviz` functions. You should visualize both H3K4me3 and H3K4me1 and the gene model.
+Visualize one of the regions using `Gviz` functions. You should visualize both H3K4me3 and H3K27ac and the gene models.

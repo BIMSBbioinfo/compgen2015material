@@ -30,7 +30,8 @@ scores that could be associated with only certain bases such as in the case of C
 methylation (See `r fig_nums("gintsum",display="cite")`). Typically, you will need to overlap intervals on interest with other features of 
 the genome, again represented as intervals. For example, you may want to overlap 
 transcription factor binding sites with CpG islands or promoters to quantify what percentage of binding sites overlap with your regions of interest. Overlapping mapped reads from high-throughput sequencing experiments with genomic features such as exons, promoters, enhancers can also be classified as operations on genomic intervals. You can think of a million other ways that involves overlapping two sets of different features on the genome. This chapter aims to show how to do analysis involving operations on genomic intervals.
- ![Rle](../nonR_Figures/genomeIntervalSummary.png) 
+
+ ![](../nonR_Figures/genomeIntervalSummary.png) 
  
  `r fig_nums("gintsum","Summary of genomic intervals with different kinds of information") ` 
 
@@ -212,14 +213,13 @@ base for the regions we are interested in. We have to extract those regions
 from RleList object and apply summary statistics. Below, we show how to extract
 subsections of RleList object. We are extracting promoter regions from ChIP-seq
 read coverage RleList. Following that, we will plot the one of the promoters associated coverage values.
-```{r,getViews,}
+```{r,getViews,fig.cap=fig_nums("rleview","Coverage vector extracted from RleList via Views() function is plotted as a line plot.")}
 
 ```
 
-Next, we are interested in average coverage per base for the promoters and later 
-we are getting the maximum value of coverage per promoter using summary functions
-that works on Views object.
-```{r,viewMeans,fig_nums("rleview","Coverage vector extracted from RleList via Views() function is plotted as a line plot.")}
+Next, we are interested in average coverage per base for the promoters using summary
+functions that works on Views object.
+```{r, viewMeans}
 
 ```
 
@@ -385,7 +385,7 @@ p + layout_karyogram(cpgi.gr, geom = "point", size = 0.5,
 
 Another way to depict regions or quantitative signals on the chromosomes is circos plots. These are circular plots usually used for showing chromosomal rearrangements, but can also be used for depicting signals.`ggbio` package can produce all kinds of circos plots. Below, we will show how to use that for our CpG island score example.
 
-```{r,fig.cap=fig_nums("karyoCpG","circos plot for CpG islands scores")}
+```{r,fig.cap=fig_nums("circosCpG","circos plot for CpG islands scores")}
 
 # set the chromsome in a circle
 # color set to white to look transparent 
