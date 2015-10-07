@@ -73,6 +73,7 @@ img {
 <li><a href="#operations-on-genomic-intervals-with-genomicranges-package"><span class="toc-section-number">2</span> Operations on Genomic Intervals with GenomicRanges package</a></li>
 <li><a href="#dealing-with-mapped-high-throughput-sequencing-reads"><span class="toc-section-number">3</span> Dealing with mapped high-throughput sequencing reads</a></li>
 <li><a href="#dealing-with-contiguous-scores-over-the-genome"><span class="toc-section-number">4</span> Dealing with contiguous scores over the genome</a></li>
+<li><a href="#visualizing-and-summarizing-genomic-intervals"><span class="toc-section-number">5</span> Visualizing and summarizing genomic intervals</a></li>
 </ul>
 </div>
 
@@ -83,6 +84,9 @@ img {
 <p>if you have done it correctly you should see this script when you type dir()</p>
 <pre><code>&gt; dir()
 [1] &quot;GenomicInterval.exercises.html&quot;</code></pre>
+<p>The data for the exercises is located at <code>../data</code> folder.</p>
+<p>Run the following to see the data files.</p>
+<pre><code>dir(&quot;../data&quot;)</code></pre>
 </div>
 <div id="operations-on-genomic-intervals-with-genomicranges-package" class="section level1">
 <h1><span class="header-section-number">2</span> Operations on Genomic Intervals with GenomicRanges package</h1>
@@ -94,7 +98,7 @@ img {
 <tr class="header">
 <th align="left">chr</th>
 <th align="left">start</th>
-<th align="left">endl</th>
+<th align="left">end</th>
 <th align="left">strand</th>
 <th align="left">score</th>
 </tr>
@@ -124,12 +128,59 @@ img {
 </tbody>
 </table>
 </div>
+<div id="section-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> </h2>
+<p>Import mouse (mm9 assembly) CpG islands and refseq genes from UCSC browser as GRanges objects using rtracklayer functions.</p>
+</div>
+<div id="section-2" class="section level2">
+<h2><span class="header-section-number">2.3</span> </h2>
+<p>Get promoters of refseq genes and calculate what percentage of them overlap with CpG islands.</p>
+</div>
+<div id="section-3" class="section level2">
+<h2><span class="header-section-number">2.4</span> </h2>
+<p>Plot the distribution of CpG island lengths for CpG islands that overlap with the promoters.</p>
+</div>
+<div id="section-4" class="section level2">
+<h2><span class="header-section-number">2.5</span> </h2>
+<p>Get canonical peaks for SP1 (peaks that are in both replicates) on chr21.Peaks for each replicate are located in “wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz” and “wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep2.broadPeak.gz” files.</p>
+</div>
 </div>
 <div id="dealing-with-mapped-high-throughput-sequencing-reads" class="section level1">
 <h1><span class="header-section-number">3</span> Dealing with mapped high-throughput sequencing reads</h1>
+<div id="section-5" class="section level2">
+<h2><span class="header-section-number">3.1</span> </h2>
+<p>Count the reads overlapping with canonical Sp1 peaks using the BAM file for one of the replicates: “wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam”.</p>
+</div>
 </div>
 <div id="dealing-with-contiguous-scores-over-the-genome" class="section level1">
 <h1><span class="header-section-number">4</span> Dealing with contiguous scores over the genome</h1>
+<div id="section-6" class="section level2">
+<h2><span class="header-section-number">4.1</span> </h2>
+<p>Extract Views object for the promoters on chr20 from “H1.ESC.H3K4me1.chr20.bw” file. Plot the first “View” as a line plot.</p>
+</div>
+<div id="section-7" class="section level2">
+<h2><span class="header-section-number">4.2</span> </h2>
+<p>Make a histogram of the maximum signal for the Views in the object you extracted above. You can use any of the view summary functions or use lapply() and write your own summary function.</p>
+</div>
+<div id="section-8" class="section level2">
+<h2><span class="header-section-number">4.3</span> </h2>
+<p>Get the genomic positions of maximum signal in each view and make a GRanges object. <strong>HINT</strong>: See ?viewRangeMaxs help page. Try to make a GRanges object out of the returned object.</p>
+</div>
+</div>
+<div id="visualizing-and-summarizing-genomic-intervals" class="section level1">
+<h1><span class="header-section-number">5</span> Visualizing and summarizing genomic intervals</h1>
+<div id="section-9" class="section level2">
+<h2><span class="header-section-number">5.1</span> </h2>
+<p>Extract -500,+500 bp regions around TSSes on chr21, there are refseq files in the data folder or you can pull the data out of UCSC browser. Use SP1 ChIP-seq data (“wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam” ) to create an average profile of read coverage around TSSes. Following that, visualize the read coverage with a heatmap. <strong>HINT</strong>: All of these possible using <code>genomation</code> package functions.</p>
+</div>
+<div id="section-10" class="section level2">
+<h2><span class="header-section-number">5.2</span> </h2>
+<p>Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K4me1 ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.</p>
+</div>
+<div id="section-11" class="section level2">
+<h2><span class="header-section-number">5.3</span> </h2>
+<p>Visualize one of the regions using <code>Gviz</code> functions. You should visualize both H3K4me3 and H3K4me1 and the gene model.</p>
+</div>
 </div>
 
 

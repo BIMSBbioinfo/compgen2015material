@@ -96,15 +96,9 @@ txdb2
 
 
 ## ---- findPeakwithCpGi ----
-pk1=read.table("../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz")
-head(pk1)
+library(genomation)
+pk1.gr=readBroadPeak("../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz")
 
-# convert data frame to GRanges
-pk1.gr=makeGRangesFromDataFrame(pk1,
-        seqnames.field=c("V1"),
-        start.field=c("V2"),
-        end.field=c("V3"))
-# only peaks on chr21
 pk1.gr=pk1.gr[seqnames(pk1.gr)=="chr21",]
 # get the peaks that overlap with CpG
 # islands
@@ -201,18 +195,52 @@ bwFile="../data/wgEncodeHaibTfbsA549.chr21.bw"
 bw.gr=import(bwFile, which=promoter.gr) # get coverage vectors
 bw.gr
 
+## ---- BigWigCov ---
+cov.bw=coverage(bw.gr,weight = "score")
+
+# or get this directly from
+cov.bw=import(bwFile, which=promoter.gr,as = "RleList")
 
 ## ---- getViews ---
-myViews=Views(covs,as(promoter.gr,"RangesList")) # get subsets of coverage
+myViews=Views(cov.bw,as(promoter.gr,"RangesList")) # get subsets of coverage
+# there is a views object for each chromosome
+myViews
+myViews[[1]]
+# get the coverage vector from the 5th view and plot
+plot(myViews[[1]][[5]],type="l")
 
-## ---- getViewSummaries ---
+## ---- viewMeans ---
+# get the mean of the views
+head(
+  viewMeans(myViews[[1]])
+)
 
-## ---- getCovMatrix ---
-cov.mat=t(viewApply(myViews$chr21,as.vector)) # get coverage matrix
+# get the max of the views
+head(
+  viewMeans(myViews[[1]])
+)
 
-# plot mean coverage
-plot(-1000:1000,colMeans(cov.mat),type="l",
-     ylab="mean coverage",xlab="window around TSS",
-     main="ChIP-Seq SP1")
 
-#image(cov.mat)
+
+
+
+## ---- ggbio ----
+
+# plot ideogram
+
+# plot CpG islands accross the genome
+
+
+## ---- genomation1 ----
+
+# get summary of read coverage across promoters
+
+# look inside the data
+
+## ---- genomationHeat ----
+
+# make a heatmap
+
+## ---- genomationMeta ----
+
+# make a meta plot

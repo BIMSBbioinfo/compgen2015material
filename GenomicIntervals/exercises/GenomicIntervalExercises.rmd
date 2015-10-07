@@ -25,6 +25,13 @@ if you have done it correctly you should see this script when you type dir()
 [1] "GenomicInterval.exercises.html"
 ```
 
+The data for the exercises is located at `../data` folder.
+
+Run the following to see the data files.
+```
+dir("../data")
+```
+
 # Operations on Genomic Intervals with GenomicRanges package
 
 ##
@@ -38,23 +45,44 @@ Create a GRanges object using the information in the table below:
 
 
 ##
-Import mouse (mm9 assembly) CpG islands and refseq genes from UCSC browser as GRanges objects.
+Import mouse (mm9 assembly) CpG islands and refseq genes from UCSC browser as GRanges objects using rtracklayer functions.
 
 
 ##
 Get promoters of refseq genes and calculate what percentage of them overlap with CpG islands.
 
 ## 
-Plot the distribution of CpGi island lengths for CpG islands that overlap with the 
+Plot the distribution of CpG island lengths for CpG islands that overlap with the 
 promoters.
 
 ##
-get cannonical peaks for Sp1
+Get canonical peaks for SP1 (peaks that are in both replicates) on chr21.Peaks for each replicate are located in "wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz" and "wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep2.broadPeak.gz" files.
 
 # Dealing with mapped high-throughput sequencing reads
 
 ## 
-Count the reads overlapping with cannonical Sp1 peaks
+Count the reads overlapping with canonical Sp1 peaks using the BAM file for one of the replicates: "wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam".
 
 # Dealing with contiguous scores over the genome
 
+## 
+Extract Views object for the promoters on chr20 from "H1.ESC.H3K4me1.chr20.bw" file. Plot the first "View" as a line plot.
+
+## 
+Make a histogram of the maximum signal for the Views in the object you extracted above. You can use any of the view summary functions or use lapply() and write your own summary function.
+
+## 
+Get the genomic positions of maximum signal in each view and make a GRanges object. **HINT**: See ?viewRangeMaxs help page. Try to make a GRanges object out of the returned object.
+
+# Visualizing and summarizing genomic intervals
+
+##
+Extract -500,+500 bp regions around TSSes on chr21, there are refseq files in the data folder or you can
+pull the data out of UCSC browser. Use SP1 ChIP-seq data 
+("wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam" ) to create an average profile of read coverage around TSSes. Following that, visualize the read coverage with a heatmap. **HINT**: All of these possible using `genomation` package functions.
+
+##
+Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K4me1 ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.
+
+## 
+Visualize one of the regions using `Gviz` functions. You should visualize both H3K4me3 and H3K4me1 and the gene model.
