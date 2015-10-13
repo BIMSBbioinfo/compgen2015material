@@ -23,8 +23,7 @@ fig_nums <- captioner()
 A considerable time in computational genomics is spent on overlapping different 
 features of the genome. Each feature can be represented with a genomic interval 
 within the chromosomal coordinate system. In addition, each interval can carry 
-different sorts of information. You can have exon coordinates or transcription 
-factor binding sites just represents an interval. On the other hand,
+different sorts of information. An interval may for instance represent exon coordinates or a transcription factor binding site. On the other hand,
 you can have base-pair resolution, continuous scores over the genome such as read coverage or 
 scores that could be associated with only certain bases such as in the case of CpG 
 methylation (See `r fig_nums("gintsum",display="cite")`). Typically, you will need to overlap intervals on interest with other features of 
@@ -36,7 +35,7 @@ transcription factor binding sites with CpG islands or promoters to quantify wha
  `r fig_nums("gintsum","Summary of genomic intervals with different kinds of information") ` 
 
 # Operations on Genomic Intervals with GenomicRanges package
-[Bioconductor](http://bioconductor.org) project has a dedicated package called [**GenomicRanges**](http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html) to deal with genomic intervals. In this section, we will provide use cases involving operations on genomic intervals. The main reason we will stick to this package is that it provides tools to do overlap operations. However package requires that users operate on specific data types that are conceptually similar to a tabular data structure implemented in a way that makes overlapping and related operations easier. The main object we will be using is called `GRanges` object and we will also see some other related objects from the `GenomicRanges` package.
+The [Bioconductor](http://bioconductor.org) project has a dedicated package called [**GenomicRanges**](http://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html) to deal with genomic intervals. In this section, we will provide use cases involving operations on genomic intervals. The main reason we will stick to this package is that it provides tools to do overlap operations. However package requires that users operate on specific data types that are conceptually similar to a tabular data structure implemented in a way that makes overlapping and related operations easier. The main object we will be using is called `GRanges` object and we will also see some other related objects from the `GenomicRanges` package.
 
 
 
@@ -70,10 +69,10 @@ You may need to do some pre-processing before/after reading in the BED file. Bel
 ```
 
 Another way of doing this is from a BED file is to use `readTranscriptfeatures()`
-function from `genomation` package.
+function from the `genomation` package.
 
 
-Reading the genomic features as text files and converting to GRanges is not the only way to create GRanges object. With the help of [rtracklayer](http://www.bioconductor.org/packages/release/bioc/html/rtracklayer.html) package we can directly import BED files.
+Reading the genomic features as text files and converting to GRanges is not the only way to create GRanges object. With the help of the [rtracklayer](http://www.bioconductor.org/packages/release/bioc/html/rtracklayer.html) package we can directly import BED files.
 
 ```{r,importbed_rtracklayer,eval=FALSE}
 
@@ -131,7 +130,7 @@ formats are mostly used to store genomic variation data such as SNPs and indels.
 
 This is one of the most common tasks in genomics. Usually, you have a set of regions that you are interested in and you want to see if they overlap with another set of regions or see how many of them overlap. A good example is transcription factor binding sites determined by [ChIP-seq](http://en.wikipedia.org/wiki/ChIP-sequencing) experiments. In these types of experiments and followed analysis, one usually ends up with genomic regions that are bound by transcription factors. One of the standard next questions would be to annotate binding sites with genomic annotations such as promoter,exon,intron and/or CpG islands. Below is a demonstration of how transcription factor binding sites can be annotated using CpG islands. First, we will get the subset of binding sites that overlap with the CpG islands. In this case, binding sites are ChIP-seq peaks.
 
-We can find the subset of peaks that overlap with the CpG islands using **subsetByoverlaps()** function. You will also see another way of converting **data frames** to **GRanges**.
+We can find the subset of peaks that overlap with the CpG islands using the **subsetByoverlaps()** function. You will also see another way of converting **data frames** to **GRanges**.
 
 ```{r,findPeakwithCpGi}
 
@@ -142,7 +141,7 @@ For each CpG island, we can count the number of peaks that overlap with a given 
 
 ```
 
-`findOverlaps()` function can be used to see one-to-one overlaps between peaks and CpG islands. It returns a matrix showing which peak overlaps with which CpGi island.
+The `findOverlaps()` function can be used to see one-to-one overlaps between peaks and CpG islands. It returns a matrix showing which peak overlaps with which CpGi island.
 
 ```{r,findOverlaps}
 
@@ -156,7 +155,7 @@ Another interesting thing would be to look at the distances to nearest CpG islan
 
 
 # Dealing with high-throughput sequencing reads
-In recent years, advances in sequencing technology helped researchers sequence the genome deeper than ever. The reads from sequencing machines are usually aligned to the genome and the next task is to quantify the enrichment of those aligned reads in the regions of interest. You may want to count how many reads overlapping with your promoter set of interest or you may want to quantify RNA-seq reads overlapping with exons. This is similar to operations on genomic intervals which are described previously. If you can read all your alignments into the memory and create a GRanges object, you can apply the previously described operations. However, most of the time we can not read all mapped reads into the memory, so we have to use specialized tools to query and quantify alignments on a given set of regions. One of the most common alignment formats is SAM/BAM format, most aligners will produce SAM/BAM output or you will be able to convert your specific alignment format to SAM/BAM format. BAM format is binary version of the human readable SAM format. SAM format have specific columns that contain different kind of information about the alignment such as mismatches, qualities etc. (see http://samtools.sourceforge.net/SAM1.pdf for SAM format specification).
+In recent years, advances in sequencing technology helped researchers sequence the genome deeper than ever. The reads from sequencing machines are usually aligned to the genome and the next task is to quantify the enrichment of those aligned reads in the regions of interest. You may want to count how many reads overlapping with your promoter set of interest or you may want to quantify RNA-seq reads overlapping with exons. This is similar to operations on genomic intervals which are described previously. If you can read all your alignments into the memory and create a GRanges object, you can apply the previously described operations. However, most of the time we can not read all mapped reads into the memory, so we have to use specialized tools to query and quantify alignments on a given set of regions. One of the most common alignment formats is SAM/BAM format, most aligners will produce SAM/BAM output or you will be able to convert your specific alignment format to SAM/BAM format. The BAM format is a binary version of the human readable SAM format. The SAM format has specific columns that contain different kind of information about the alignment such as mismatches, qualities etc. (see http://samtools.sourceforge.net/SAM1.pdf for SAM format specification).
 
 ## Quality check on sequencing reads and mapping reads to the genome
 
@@ -167,7 +166,7 @@ Read quality checking is possible with Bioconductor packages: [qcrc](http://www.
 
 ## Counting mapped reads for a set of regions
 
-Rsamtools package has functions to query BAM files. The function we will use in the first example is countBam which takes input of the BAM file and param argument. “param” argument takes a ScanBamParam object. The object is returned by ScanBamParam() function and contains parameters for scanning the BAM file. The example below is a simple example and ScanBamParam() only includes regions of interest, promoters on chr21.
+Rsamtools package has functions to query BAM files. The function we will use in the first example is countBam which takes input of the BAM file and param argument. “param” argument takes a ScanBamParam object. The object is instantiated using **ScanBamParam()** and contains parameters for scanning the BAM file. The example below is a simple example where ScanBamParam() only includes regions of interest, promoters on chr21.
 
 ```{r,countBam}
 
@@ -180,7 +179,7 @@ Alternatively, aligned reads can be read in using GenomicAlignments package (whi
 ```
 
 
-# Dealing with contiguous scores over the genome
+# Dealing with continuous scores over the genome
 Most high-throughput data can be viewed as a continuous score over the bases of the genome. In case of RNA-seq or ChIP-seq experiments the data can be represented as read coverage values per genomic base position. In addition, other information (not necessarily from high-throughput experiments) can be represented this way. The GC content and conservation scores per base are prime examples of other data sets that can be represented as scores. This sort of data can be stored as a generic text file or can have special formats such as Wig (stands for wiggle) from UCSC, or the bigWig format is which is indexed binary format of the wig files. The bigWig format is great for data that covers large fraction of the genome with varying scores, because the file is much smaller than regular text files that have the same information and it can be queried easier since it is indexed.
 
 In R/Bioconductor, the continuous data can also be represented in a compressed format, in a format called Rle vector, which stands for run-length encoded vector. This gives superior memory performance over regular vectors because repeating consecutive values are represented as one value in the Rle vector (See `r fig_nums("Rle",display="cite")`). ![Rle](../nonR_Figures/Rle_demo.png) `r fig_nums("Rle","Rle encoding explained") ` 
@@ -270,7 +269,7 @@ plotTracks(track.list,from=27698681,to=28083310,chromsome="chr21")
 Looking at data one region at a time could be inefficient. One can summarize 
 different data sets over thousands of regions of interest and identify patterns. 
 This summaries can include different data types such as motifs, read coverage 
-and other scores associated with genomic intervals. `genomation` package can 
+and other scores associated with genomic intervals. The `genomation` package can 
 summarize and help identify patterns in the datasets. The datasets can have
 different kinds of information and multiple file types can be used such as BED, GFF, BAM and bigWig. We will look at H3K4me3 ChIP-seq and DNAse-seq signals from H1 embryonic stem cell line. H3K4me3 is usually associated with promoters and regions with high DNAse-seq signal are associated with accessible regions, that means mostly regulatory regions. We will summarize those datasets around the transcription start sites (TSS) of genes on chromosome 20 of human hg19 assembly. We will first read the genes and extract the region around TSS, 500bp upstream and downstream. We will then create a matrix of ChIP-seq scores for those regions, each row will represent a region around a specific TSS and columns will be the scores per base. We will then plot, average enrichment values around the TSSes of genes on chromosome 20.
 ```{r,fig.cap=fig_nums("metaPlot","meta region plot using genomation")}
@@ -331,7 +330,7 @@ multiHeatMatrix(sml,order=TRUE,xcoords = c(-500,500),
 
 ```
 
-This revealed a different picture than we have observed before. Almost, half of the promoters have no signal for DNAse or H3K4me3, these regions are probably not active and associated genes are not expressed.For regions with H3K4me3 signal, there are two major patterns. One pattern where both downstream and upstream of the TSS are enriched. On the other pattern, mostly downstream of the TSS is enriched.
+This revealed a different picture than we have observed before. Almost half of the promoters have no signal for DNAse or H3K4me3; these regions are probably not active and associated genes are not expressed. For regions with H3K4me3 signal, there are two major patterns. One pattern where both downstream and upstream of the TSS are enriched. On the other pattern, mostly downstream of the TSS is enriched.
 
 ## Making karyograms and circos plots
 Chromosomal karyograms  and circos plots are beneficial for displaying data over the 

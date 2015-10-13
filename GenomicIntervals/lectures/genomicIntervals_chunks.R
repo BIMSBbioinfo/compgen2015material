@@ -34,6 +34,10 @@ gr
 elementMetadata(gr)
 values(gr)
 
+# you may also add metadata using the $ operator, as for data frames
+gr$name3 = c("A","C", "B")
+gr
+
 ## ---- convertDataframe2gr ----
 # read CpGi data set
 cpgi.df = read.table("../data/cpgi.hg19.chr21.bed", header = FALSE,
