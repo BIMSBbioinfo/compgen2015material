@@ -41,7 +41,7 @@ Create a GRanges object using the information in the table below:
 | :--- |:------| :-----| :-----|:-----|
 | chr1 | 10000 | 10300 |  +    | 10 |
 | chr1 | 11100 | 11500 |  -    | 20 |
-| chr2 | 20000 | 10030 |  +    | 15 |
+| chr2 | 20000 | 20030 |  +    | 15 |
 
 
 ##

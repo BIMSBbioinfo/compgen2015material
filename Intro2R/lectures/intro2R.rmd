@@ -11,12 +11,12 @@ output:
 
 
 
-R is a free statistical programming language that is popular among researchers and data miners to build software and analyze data1. In next sections, we will first get you started with the setup of en- vironment for using R and then introduce some basic R operations and data structures that will be good to know if you do not have prior experience with R. If you need more in depth R introduc- tion you will want to check out some beginner level books and on- line tutorials. This website has a bunch of resources listed: [http: //www.introductoryr.co.uk/R_Resources_for_Beginners.html]()
+R is a free statistical programming language that is popular among researchers and data miners to build software and analyze data1. In next sections, we will first get you started with the setup of environment for using R and then introduce some basic R operations and data structures that will be good to know if you do not have prior experience with R. If you need more in depth R introduction you will want to check out some beginner level books and online tutorials. This website has a bunch of resources listed: [http: //www.introductoryr.co.uk/R_Resources_for_Beginners.html]()
 
 # The Setup
 
 Download and install R http://cran.r-project.org/ and RStudio http://www.rstudio.com/ if you do not have them already. Rstudio is optional but it is a great tool if you are just starting to learn R.
-You will need specific data sets to run the codes in this document. Download the data.zip[URL to come] and extract it to your directory of choice. The folder name should be “data” and your R working directory should be level above the data folder. That means in your R console, when you type “dir(“data”)” you should be able to see the contents of the data folder. You can change your working directory by *setwd()* command and get your current working directory with *getwd()* command in R2. In RStudio, you can click on the top menu and change the location of your working directory via user interface.
+You will need specific data sets to run the codes in this document. Download the data.zip[URL to come] and extract it to your directory of choice. The folder name should be “data” and your R working directory should be level above the data folder. That means in your R console, when you type “dir(“data”)” you should be able to see the contents of the data folder. You can change your working directory by *setwd()* command and get your current working directory with *getwd()* command in R. In RStudio, you can click on the top menu and change the location of your working directory via user interface.
 
 
 ## Installing packages
@@ -60,7 +60,7 @@ biocLite("BiocUpgrade")
 ```
 
 ## Installing packages in custom locations
-If you will be using R on servers or computing clusters rather than your personal computer it is unlikey that you will have administrator access to install packages. In that case, you can install packges in custom locations by telling R where to look for additional packages. This is done by setting up an .Renviron file in your home directory and add the following line:
+If you will be using R on servers or computing clusters rather than your personal computer it is unlikely that you will have administrator access to install packages. In that case, you can install packages in custom locations by telling R where to look for additional packages. This is done by setting up an .Renviron file in your home directory and add the following line:
 ```
 R_LIBS=~/Rlibs
 ```
@@ -71,7 +71,7 @@ This tells R that “Rlibs” directory at your home directory will be the first
 You can get help on functions by help() and help.search() functions. You can list the functions in a package with ls() function
 
 ```{r,eval=FALSE}
-libray(MASS)
+library(MASS)
 ls("package:MASS") # functions in the package
 ls() # objects in your R enviroment
 # get help on hist() function
@@ -80,10 +80,10 @@ help("hist")
 # search the word "hist" in help pages
 help.search("hist")
 ??hist
-@
+
 ```
 ### More help needed?
-In addition, check package vignettes for help and practical understanding of the functions. All Bionconductor packages have vignettes that walk you thorugh example analysis. Google search will always be helpful as well, there are many blogs and web pages that have posts about R. R-help, Stackoverflow and R-bloggers are usually source of good and reliable information.
+In addition, check package vignettes for help and practical understanding of the functions. All Bionconductor packages have vignettes that walk you through example analysis. Google search will always be helpful as well, there are many blogs and web pages that have posts about R. R-help, Stackoverflow and R-bloggers are usually source of good and reliable information.
 
 
 
@@ -102,7 +102,7 @@ exp(2)        # exponential function
 ```
 
 # Data structures
-R has multiple data structures. If you are familiar with excel you can think of data structures as building blocks of a table and the table it self, a table is similar to a sheet in excel. Most of the time you will deal with tabular data sets, you will manipulate them, take sub-sections of them. It is good to know what are the common data structures in R and how they can be used.
+R has multiple data structures. If you are familiar with excel you can think of data structures as building blocks of a table and the table itself, and a table is similar to a sheet in excel. Most of the time you will deal with tabular data sets, you will manipulate them, take sub-sections of them. It is good to know what are the common data structures in R and how they can be used.
 
 ## Vectors
 Vectors are one the core R data structures. It is basically a list of elements of the same type (numeric,character or logical). Later you will see that every column of a table will be represented as a vector. R handles vectors easily and intuitively. You can create vectors with c() function, however that is not the only way. The operations on vectors will propagate to all the elements of the vectors.
@@ -187,15 +187,15 @@ w$age
 ```
 
 ## Factors
-Factors are used to store categorical data. They are important for statistical modeling since categorical variables are treated differently in statistical models than continuos variables. This ensures categorical data treated accordingly in statistical models.
+Factors are used to store categorical data. They are important for statistical modeling since categorical variables are treated differently in statistical models than continuous variables. This ensures categorical data treated accordingly in statistical models.
 ```{r}
 features=c("promoter","exon","intron")
 f.feat=factor(features)
 ```
-Important thing to note is that when you are reading a data.frame with read.table() or creating a data frame with **data.frame()** character columns are stored as factors by default, to change this behaviour you need to set **stringsAsFactors=FALSE** in **read.table()** and/or **data.frame()** function arguments.
+Important thing to note is that when you are reading a data.frame with read.table() or creating a data frame with **data.frame()** character columns are stored as factors by default, to change this behavior you need to set **stringsAsFactors=FALSE** in **read.table()** and/or **data.frame()** function arguments.
 
 # Data types
-There are four comon data types in R, they are **numeric**, **logical**, **character** and **integer**. All these data types can be used to create vectors natively.
+There are four common data types in R, they are **numeric**, **logical**, **character** and **integer**. All these data types can be used to create vectors natively.
 ```{r}
 #create a numeric vector x with 5 components
 x<-c(1,3,2,10,5)
@@ -256,7 +256,7 @@ We can modify all the plots by providing certain arguments to the plotting funct
 hist(x,main="Hello histogram!!!",col="red")
 ```
 
-Next, we will make a scatter plot. Scatter plots are one os the most common plots you will encounter in data analysis. We will sample another set of 50 values and plotted those against the ones we sampled earlier. Scatterplot shows values of two variables for a set of data points. It is useful to visualize relationships between two variables. It is frequently used in connection with correlation and linear regression. There are other variants of scatter plots which show density of the points with different colors. We will show examples of those that in following chapters. The scatter plot from our sampling experiment is shown in the figure. Notice that, in addition to main we used **“xlab”** and **“ylab”** arguments to give labels to the plot. You can customize the plots even more than this. See **?plot** and **?par** for more arguments that can help you customize the plots.
+Next, we will make a scatter plot. Scatter plots are one  the most common plots you will encounter in data analysis. We will sample another set of 50 values and plotted those against the ones we sampled earlier. Scatterplot shows values of two variables for a set of data points. It is useful to visualize relationships between two variables. It is frequently used in connection with correlation and linear regression. There are other variants of scatter plots which show density of the points with different colors. We will show examples of those that in following chapters. The scatter plot from our sampling experiment is shown in the figure. Notice that, in addition to main we used **“xlab”** and **“ylab”** arguments to give labels to the plot. You can customize the plots even more than this. See **?plot** and **?par** for more arguments that can help you customize the plots.
 
 ```{r}
 # randomly sample 50 points from normal distribution
@@ -267,9 +267,9 @@ plot(x,y,main="scatterplot of random samples",
         ylab="y values",xlab="x values")
 ```
 
-we can also plot boxplots for vectors x and y. Boxplots depict groups of numerical data through their quartiles. The edges of the box denote 1st and 3rd quartile, and the line that crosses the box is the median. Whiskers usually are defined using interquantile range:
+we can also plot boxplots for vectors x and y. Boxplots depict groups of numerical data through their quantiles. The edges of the box denote 1st and 3rd quantile, and the line that crosses the box is the median. Whiskers usually are defined using interquantile range:
 
-lowerWhisker=Q1-1.5[IQR] and upperWhisker=Q1+1.5*[IQR]
+*lowerWhisker=Q1-1.5[IQR] and upperWhisker=Q1+1.5[IQR]*
 
 In addition, outliers can be depicted as dots. In this case, outliers are the values that remain outside the whiskers.
 
@@ -307,7 +307,7 @@ dev.off()
 # Functions and control structures (for, if/else etc.)
 
 ## User defined functions
-Functions are useful for transforming larger chunks of code to re- usable pieces of code. Generally, if you need to execute certain tasks with variable parameters then it is time you write a function. A func- tion in R takes different arguments and returns a definite output, much like mathematical functions. Here is a simple function takes two arguments, x and y, and returns the sum of their squares.
+Functions are useful for transforming larger chunks of code to re- usable pieces of code. Generally, if you need to execute certain tasks with variable parameters then it is time you write a function. A function in R takes different arguments and returns a definite output, much like mathematical functions. Here is a simple function takes two arguments, x and y, and returns the sum of their squares.
 
 ```{r}
 sqSum<-function(x,y){
@@ -329,7 +329,7 @@ cat("here is the result:",result,"\n")
 sqSumPrint(2,3)
 ```
 
-Sometimes we would want to execute a certain part of the code only if certain condition is satisfied. This condition can be anything from the type of an object (Ex: if object is a matrix execute certain code), or it can be more compicated such as if object value is between certain thresholds. Let us see how they can be used3. They can be used anywhere in your code, now we will use it in a function.
+Sometimes we would want to execute a certain part of the code only if certain condition is satisfied. This condition can be anything from the type of an object (Ex: if object is a matrix execute certain code), or it can be more complicated such as if object value is between certain thresholds. Let us see how they can be used3. They can be used anywhere in your code, now we will use it in a function.
 
 ```{r,eval=FALSE}
 cpgi.df <- read.table("../data/subset.cpgi.hg18.bed", header = FALSE)
@@ -382,7 +382,7 @@ head(result)
 ```
 
 ### apply family functions instead of loops
-R has other ways of repeating tasks that tend to be more efficient than using loops. They are known as the **“apply”** family of functions, which include *apply,lapply, mapply and tapply* (and some other variants). All of these functions apply a given function to a set of instances and returns the result of those functions for each instance. The differences between them is that they take different type of inputs. For example apply works on data frames or matrices and applies the function on each row or column of the data structure. *lapply* works on lists or vectors and applies a function which takes the list element as an argument. Next we will demonstrate how to use **apply()** on a matrix. The example applies the sum function on the rows of a matrix, it basically sums up the values on each row of the matrix, which is conceptualized in Figure below.
+R has other ways of repeating tasks that tend to be more efficient than using loops. They are known as the **“apply”** family of functions, which include *apply, lapply, mapply and tapply* (and some other variants). All of these functions apply a given function to a set of instances and returns the result of those functions for each instance. The differences between them is that they take different type of inputs. For example apply works on data frames or matrices and applies the function on each row or column of the data structure. *lapply* works on lists or vectors and applies a function which takes the list element as an argument. Next we will demonstrate how to use **apply()** on a matrix. The example applies the sum function on the rows of a matrix, it basically sums up the values on each row of the matrix, which is conceptualized in Figure below.
 
 ![alt text](../nonR_figures/apply.png "apply concept")
 
