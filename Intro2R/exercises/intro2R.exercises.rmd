@@ -178,57 +178,6 @@ myvec[ myvec == 2 ]
 myvec[ myvec != 2 ] 
 ```
 
-## 
-Make a list using `list()` function, your list should have 4 elements
-the one below has 2.
-
-Ex: `mylist= list(a=c(1,2,3),b=c("apple,"orange"))`
-
-```{r,echo=FALSE,eval=FALSE}
-mylist= list(a=c(1,2,3),
-            b=c("apple","orange"),
-            c=matrix(1:4,nrow=2),
-            d="hello")
-```
-
-##
-Select the 1st element of the list you made using `$` notation.
-
-Ex: `mylist$a` selects first element named "a"
-
-```{r,echo=FALSE,eval=FALSE}
-mylist$a
-```
-
-## 
-Select the 4th element of the list you made earlier using `$` notation.
-
-```{r,echo=FALSE,eval=FALSE}
-mylist$d
-```
-
-##
-Select the 1st element of your list using `[ ]` notation. 
-
-Ex: `mylist[1]` selects first element named "a", you get a list with one element.
-
-Ex: `mylist["a"]` selects first element named "a", you get a list with one element.
-
-```{r,echo=FALSE,eval=FALSE}
-mylist[1] # -> still a list
-mylist[[1]] # not a list
-
-mylist["a"] 
-mylist[["a"]] 
-```
-
-##
-select the 4th element of your list using '[ ]' notation.
-
-```{r,echo=FALSE,eval=FALSE}
-mylist[4] 
-mylist[[4]]
-```
 
 ##
 make a 5x3 matrix (5 rows, 3 columns) using `matrix()`.
@@ -353,6 +302,58 @@ as.matrix(df[,c(1,3)])
 as.matrix(df)
 ```
 
+## 
+Make a list using `list()` function, your list should have 4 elements
+the one below has 2.
+
+Ex: `mylist= list(a=c(1,2,3),b=c("apple,"orange"))`
+
+```{r,echo=FALSE,eval=FALSE}
+mylist= list(a=c(1,2,3),
+            b=c("apple","orange"),
+            c=matrix(1:4,nrow=2),
+            d="hello")
+```
+
+##
+Select the 1st element of the list you made using `$` notation.
+
+Ex: `mylist$a` selects first element named "a"
+
+```{r,echo=FALSE,eval=FALSE}
+mylist$a
+```
+
+## 
+Select the 4th element of the list you made earlier using `$` notation.
+
+```{r,echo=FALSE,eval=FALSE}
+mylist$d
+```
+
+##
+Select the 1st element of your list using `[ ]` notation. 
+
+Ex: `mylist[1]` selects first element named "a", you get a list with one element.
+
+Ex: `mylist["a"]` selects first element named "a", you get a list with one element.
+
+```{r,echo=FALSE,eval=FALSE}
+mylist[1] # -> still a list
+mylist[[1]] # not a list
+
+mylist["a"] 
+mylist[["a"]] 
+```
+
+##
+select the 4th element of your list using '[ ]' notation.
+
+```{r,echo=FALSE,eval=FALSE}
+mylist[4] 
+mylist[[4]]
+```
+
 ##
 Make a factor using factor(), with 5 elements.
 Ex: `fa=factor(c("a","a","b"))`
@@ -434,10 +435,12 @@ head(df)
 ```
 
 ##
-Write CpG islands to a text file called "my.cpgi.file.txt".
+Write CpG islands to a text file called "my.cpgi.file.txt". Write the file
+to your home folder, you can use `file="~/my.cpgi.file.txt"` in linux. `~/` denotes
+home folder.
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(cpgi,file="my.cpgi.file.txt")
+write.table(cpgi,file="~/my.cpgi.file.txt")
 ```
 
 ##
@@ -445,7 +448,7 @@ Same as above but this time make sure use `quote=FALSE`,`sep="\t"` and `row.name
 Save the file to "my.cpgi.file2.txt" and compare it with "my.cpgi.file.txt"
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(cpgi,file="my.cpgi.file2.txt",quote=FALSE,sep="\t",row.names=FALSE)
+write.table(cpgi,file="~/my.cpgi.file2.txt",quote=FALSE,sep="\t",row.names=FALSE)
 ```
 
 ##
@@ -453,14 +456,14 @@ Write out the first 10 rows of 'cpgi' data frame.
 **HINT:** use subsetting for data frames we learned before.
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(cpgi[1:10,],file="my.cpgi.fileNrow10.txt",quote=FALSE,sep="\t")
+write.table(cpgi[1:10,],file="~/my.cpgi.fileNrow10.txt",quote=FALSE,sep="\t")
 ```
 
 ##
 Write the first 3 columns of 'cpgi' data frame.
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(cpgi[,1:3],file="my.cpgi.fileCol3.txt",quote=FALSE,sep="\t")
+write.table(cpgi[,1:3],file="~/my.cpgi.fileCol3.txt",quote=FALSE,sep="\t")
 ```
 
 ##
@@ -468,7 +471,7 @@ Write CpG islands only on chr1.
 **HINT:** use subsetting with `[]`, feed a logical vector using `==` operator.
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(cpgi[cpgi$chrom == "chr1",],file="my.cpgi.fileChr1.txt",
+write.table(cpgi[cpgi$chrom == "chr1",],file="~/my.cpgi.fileChr1.txt",
             quote=FALSE,sep="\t")
 head(cpgi[cpgi$chrom == "chr1",])
 ```
@@ -843,7 +846,7 @@ sapply(gcValues,GCclass)
 ##
 Is there a way to decide on the GC percentage class of given vector of GCpercentages
 without using if/else structure and loops ? if so, how can you do it?
-**HINT:** subsetting
+**HINT:** subsetting using < and > operators
 
 ```{r,echo=FALSE,eval=FALSE}
 result=rep("low",length(gcValues) )

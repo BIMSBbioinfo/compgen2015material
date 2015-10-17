@@ -36,7 +36,7 @@ biocLite("rtracklayer")
 You can install packages from github using *install_github()* function from **devtools**
 ```{r,eval=FALSE}
 library(devtools)
-install_github("roxygen")
+install_github("hadley/stringr")
 ```
 Another way to install packages are from the source.
 ```{r,eval=FALSE}
@@ -99,16 +99,19 @@ abs(3-7)      # Absolute value of 3-7
 pi             # The number
 exp(2)        # exponential function
 # This is a comment line
+
+
 ```
 
 # Data structures
-R has multiple data structures. If you are familiar with excel you can think of data structures as building blocks of a table and the table itself, and a table is similar to a sheet in excel. Most of the time you will deal with tabular data sets, you will manipulate them, take sub-sections of them. It is good to know what are the common data structures in R and how they can be used.
+R has multiple data structures. If you are familiar with excel you can think of data structures as building blocks of a table and the table itself, and a table is similar to a sheet in excel. Most of the time you will deal with tabular data sets, you will manipulate them, take sub-sections of them. It is essential to know what are the common data structures in R and how they can be used. R deals with named data structures, this means you can give names to data structures and manipulate or operate on them using those names.
 
 ## Vectors
 Vectors are one the core R data structures. It is basically a list of elements of the same type (numeric,character or logical). Later you will see that every column of a table will be represented as a vector. R handles vectors easily and intuitively. You can create vectors with c() function, however that is not the only way. The operations on vectors will propagate to all the elements of the vectors.
 
 ```{r}
-x<-c(1,3,2,10,5)    #create a vector x with 5 components
+x<-c(1,3,2,10,5)    #create a vector named x with 5 components
+x = c(1,3,2,10,5)  
 x
 y<-1:5              #create a vector of consecutive integers y
 y+2                 #scalar addition
@@ -267,7 +270,7 @@ plot(x,y,main="scatterplot of random samples",
         ylab="y values",xlab="x values")
 ```
 
-we can also plot boxplots for vectors x and y. Boxplots depict groups of numerical data through their quantiles. The edges of the box denote 1st and 3rd quantile, and the line that crosses the box is the median. Whiskers usually are defined using interquantile range:
+we can also plot boxplots for vectors x and y. Boxplots depict groups of numerical data through their quartiles. The edges of the box denote 1st and 3rd quartile, and the line that crosses the box is the median. Whiskers usually are defined using interquantile range:
 
 *lowerWhisker=Q1-1.5[IQR] and upperWhisker=Q1+1.5[IQR]*
 
@@ -307,7 +310,7 @@ dev.off()
 # Functions and control structures (for, if/else etc.)
 
 ## User defined functions
-Functions are useful for transforming larger chunks of code to re- usable pieces of code. Generally, if you need to execute certain tasks with variable parameters then it is time you write a function. A function in R takes different arguments and returns a definite output, much like mathematical functions. Here is a simple function takes two arguments, x and y, and returns the sum of their squares.
+Functions are useful for transforming larger chunks of code to re-usable pieces of code. Generally, if you need to execute certain tasks with variable parameters then it is time you write a function. A function in R takes different arguments and returns a definite output, much like mathematical functions. Here is a simple function takes two arguments, x and y, and returns the sum of their squares.
 
 ```{r}
 sqSum<-function(x,y){
