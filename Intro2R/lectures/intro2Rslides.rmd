@@ -336,6 +336,7 @@ We will sample sample 50 values from normal distribution and plot them as a hist
 ```{r,fig.show='hide'}
 # sample 50 values from normal distribution
 # and store them in vector x
+set.seed(101)
 x<-rnorm(50)
 hist(x) # plot the histogram of those values
 ```
@@ -405,6 +406,16 @@ plot(x,y)
 dev.copy(pdf,"mygraphs/myplot.pdf",width=7,height=5)
 dev.off()
 ```
+
+## Other plotting frameworks: ggplot2
+```{r,fig.height=3,fig.width=3}
+library(ggplot2)
+dat=data.frame(x=x,y=y)
+ggplot(dat, aes(x=x, y=y)) + geom_point(shape=1) + # Use hollow circles
+   geom_smooth(method=lm)  # Add linear regression line
+```
+
+http://www.cookbook-r.com/Graphs/index.html
 
 # Exercises 5.1-5.23
 
