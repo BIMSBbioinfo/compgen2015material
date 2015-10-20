@@ -17,6 +17,13 @@ Set your working directory to the source file location in RStudio top menu:
 
 'Session > Set Working Directory > To Source File Location'
 
+or copy paste this your your R console in your VM.
+
+```{r,eval=FALSE}
+setwd("~/compgen2015/day6_GenomicIntervals/exercises")
+
+```
+
 if you have done it correctly you should see this script when you type dir()
 
 

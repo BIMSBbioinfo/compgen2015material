@@ -81,6 +81,8 @@ img {
 <h1><span class="header-section-number">1</span> The setup</h1>
 <p>Set your working directory to the source file location in RStudio top menu:</p>
 <p>‘Session &gt; Set Working Directory &gt; To Source File Location’</p>
+<p>or copy paste this your your R console in your VM.</p>
+<pre class="r"><code>setwd(&quot;~/compgen2015/day6_GenomicIntervals/exercises&quot;)</code></pre>
 <p>if you have done it correctly you should see this script when you type dir()</p>
 <pre><code>&gt; dir()
 [1] &quot;GenomicInterval.exercises.html&quot;</code></pre>
@@ -121,7 +123,7 @@ img {
 <tr class="odd">
 <td align="left">chr2</td>
 <td align="left">20000</td>
-<td align="left">10030</td>
+<td align="left">20030</td>
 <td align="left">+</td>
 <td align="left">15</td>
 </tr>
@@ -175,11 +177,11 @@ img {
 </div>
 <div id="section-10" class="section level2">
 <h2><span class="header-section-number">5.2</span> </h2>
-<p>Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K4me1 ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.</p>
+<p>Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K27ac ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.</p>
 </div>
 <div id="section-11" class="section level2">
 <h2><span class="header-section-number">5.3</span> </h2>
-<p>Visualize one of the regions using <code>Gviz</code> functions. You should visualize both H3K4me3 and H3K4me1 and the gene model.</p>
+<p>Visualize one of the regions using <code>Gviz</code> functions. You should visualize both H3K4me3 and H3K27ac and the gene models.</p>
 </div>
 </div>
 
