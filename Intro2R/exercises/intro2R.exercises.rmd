@@ -76,6 +76,7 @@ by 5 and assigns the value to variable y
 
 ```{r,echo=FALSE,eval=FALSE}
 x = sqrt(625)/5
+ 
 ```
 
 ##
@@ -184,7 +185,9 @@ make a 5x3 matrix (5 rows, 3 columns) using `matrix()`.
 Ex: matrix(1:6,nrow=3,ncol=2) makes a 3x2 matrix using numbers between 1 and 6
 
 ```{r,echo=FALSE,eval=FALSE}
+
 mat=matrix(1:15,nrow=5,ncol=3)
+
 ```
 
 ##
@@ -247,7 +250,8 @@ Extract first two columns and first two rows.
 ```{r,echo=FALSE,eval=FALSE}
 df[,1:2]
 
-df[,1:2]
+df[1:2,]
+df[1:2,1:2]
 ```
 
 ## 
@@ -463,7 +467,8 @@ write.table(cpgi[1:10,],file="~/my.cpgi.fileNrow10.txt",quote=FALSE,sep="\t")
 Write the first 3 columns of 'cpgi' data frame.
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(cpgi[,1:3],file="~/my.cpgi.fileCol3.txt",quote=FALSE,sep="\t")
+dfnew=cpgi[,1:3]
+write.table(dfnew,file="~/my.cpgi.fileCol3.txt",quote=FALSE,sep="\t")
 ```
 
 ##
@@ -472,7 +477,7 @@ Write CpG islands only on chr1.
 
 ```{r,echo=FALSE,eval=FALSE}
 write.table(cpgi[cpgi$chrom == "chr1",],file="~/my.cpgi.fileChr1.txt",
-            quote=FALSE,sep="\t")
+            quote=FALSE,sep="\t",row.names=FALSE)
 head(cpgi[cpgi$chrom == "chr1",])
 ```
 
@@ -511,7 +516,7 @@ x1=1:100+rnorm(100,mean=0,sd=15)
 y1=1:100
 ```
 ##
-Make a scatter plot using `x1` and `x2` vectors generated above.
+Make a scatter plot using `x1` and `y1` vectors generated above.
 
 ```{r,echo=FALSE,eval=FALSE}
 plot(x1,y1)
@@ -649,7 +654,7 @@ make multiple plots with par(mfrow=c(2,1))
 3. make a histogram
 
 ```{r,echo=FALSE,eval=FALSE}
-par( mfrow=c(2,1) )
+par( mfrow=c(1,2) )
 hist(x1)
 boxplot(y1)
 ```
@@ -687,7 +692,7 @@ Another way to save the plot is the following
   3. Close the graphics device
 
 ```{r,echo=FALSE,eval=FALSE}
-pdf("myplot1.pdf", width = 5, height = 5) # 1.
+pdf("~/myplot1.pdf", width = 5, height = 5) # 1.
 plot(x1, y1) # 2.
 dev.off()   # 3.
 ```
@@ -705,7 +710,7 @@ plot(x2,y2,pch=19,col="blue")
 
 If you use smoothScatter() function, you get the densities. 
 ```{r}
-smoothScatter(x2,y2 )
+smoothScatter(x2,y2,colramp=colorRampPalette(c("white","blue", "green","yellow","red"))) 
 ```
  
 Now, plot with `colramp=heat.colors` argument and then use a custom color scale using the following argument.
@@ -751,17 +756,21 @@ use greater or less than operators <  or  > .
 Fill in the values in the in code below, where it is written 'YOU_FILL_IN'
 
 ```{r,echo=TRUE,eval=FALSE}
-GCper=65
-result=YOU_FILL_IN # set initial value
 
-if(YOU_FILL_IN){ # check if GC value is lower than 60, assign "low" to result
-  YOU_FILL_IN
-}
-else if(YOU_FILL_IN){  # check if GC value is higher than 75, assign "high" to result
-  YOU_FILL_IN
-}else{ # if those two conditions fail then it must be "medium"
-  YOU_FILL_IN
-}
+GCper=65
+ #result="low"# set initial value
+  
+  if(GCper < 60){ # check if GC value is lower than 60, assign "low" to result
+    result="low"
+    cat("low")
+  }
+  else if(GCper > 75){  # check if GC value is higher than 75, assign "high" to result
+    result="high"
+    cat("high")
+  }else{ # if those two conditions fail then it must be "medium"
+    result="medium"
+  }
+
 result
 
 ```
