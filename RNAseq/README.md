@@ -15,16 +15,15 @@
 
 
 ## WHAT
-#### movo.ch survey
 #### ice breaker
+#### movo.ch survey
 #### Quick intro to RNA-seq
 #### Exercise in 5 groups: DE, DS, ASE, editing, de novo, exon connectivity
 
 
 ## HOW
-#### Live demo: fastest (not necessarily most sensitive) 
-#### Brainstorm session: Landscape of "issues" in analyzing RNA-seq data
-#### Brainstorm in 5 groups: DGE, DTE, DTU, DEU, dPSI
+#### Talk through live demo: fastest (not necessarily most sensitive) 
+#### Brainstorm session: Landscape of "issues" in analyzing RNA-seq data, other pipelines
 
 
 ## WHY
@@ -35,5 +34,5 @@
 
 
 ## DO
-#### Work through example (or own) dataset
-#### Give lists of DGE, DTE, DTU
+#### Students work through example (or own) dataset
+#### Goal: generate (ranked) lists of DGE, DTE, DTU genes
