@@ -52,28 +52,30 @@ Create a GRanges object using the information in the table below:
 
 
 ##
-Import mouse (mm9 assembly) CpG islands and refseq genes from UCSC browser as GRanges objects using rtracklayer functions.
+Import mouse (mm9 assembly) CpG islands and refseq transcripts from UCSC browser as `GRanges` objects using `rtracklayer` functions. HINT: Check the lecture material and modify the code there as necessary. 
 
 
 ##
-Get promoters of refseq genes and calculate what percentage of them overlap with CpG islands.
+Following from the exercise above, get the promoters of Refseq transcripts (-1000bp and +1000 bp of the TSS) and calculate what percentage of them overlap with CpG islands. HINT: You have to get the promoter coordinates and use `findOverlaps()` or `subsetByOverlaps()` from `GenomicRanges` package.
 
 ## 
 Plot the distribution of CpG island lengths for CpG islands that overlap with the 
 promoters.
 
 ##
-Get canonical peaks for SP1 (peaks that are in both replicates) on chr21.Peaks for each replicate are located in "wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz" and "wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep2.broadPeak.gz" files.
+Get canonical peaks for SP1 (peaks that are in both replicates) on chr21. Peaks for each replicate are located in `../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz` and `../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep2.broadPeak.gz` files. HINT: You need to use `findOverlaps()` or `subsetByOverlaps()` to get the subset of peaks that occur in both replicates.
+EXTRA credit: use `coverage()` and slice`()` functions to get canonical peaks.
 
 # Dealing with mapped high-throughput sequencing reads
 
 ## 
-Count the reads overlapping with canonical Sp1 peaks using the BAM file for one of the replicates: "wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam".
+Count the reads overlapping with canonical Sp1 peaks using the BAM file for one of the replicates: `../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam`. **HINT**: 
+Use functions from `GenomicAlignemnts`, see [lecture notes](../lectures/genomicIntervalsTutorial.html).
 
 # Dealing with contiguous scores over the genome
 
 ## 
-Extract Views object for the promoters on chr20 from "H1.ESC.H3K4me1.chr20.bw" file. Plot the first "View" as a line plot.
+Extract Views object for the promoters on chr20 from `../data/H1.ESC.H3K4me1.chr20.bw` file. Plot the first "View" as a line plot. **HINT**: see [lecture notes](../lectures/genomicIntervalsTutorial.html), adapt the code from there.
 
 ## 
 Make a histogram of the maximum signal for the Views in the object you extracted above. You can use any of the view summary functions or use lapply() and write your own summary function.
@@ -84,12 +86,12 @@ Get the genomic positions of maximum signal in each view and make a GRanges obje
 # Visualizing and summarizing genomic intervals
 
 ##
-Extract -500,+500 bp regions around TSSes on chr21, there are refseq files in the data folder or you can
+Extract -500,+500 bp regions around TSSes on chr21, there are refseq files in the `../data` folder or you can
 pull the data out of UCSC browser. Use SP1 ChIP-seq data 
-("wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam" ) to create an average profile of read coverage around TSSes. Following that, visualize the read coverage with a heatmap. **HINT**: All of these possible using `genomation` package functions.
+(`../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam` ) to create an average profile of read coverage around TSSes. Following that, visualize the read coverage with a heatmap. **HINT**: All of these possible using `genomation` package functions.
 
 ##
-Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 and H3K27ac ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.
+Extract -500,+500 bp regions around TSSes on chr20. Use H3K4me3 (`../data/H1.ESC.H3K4me3.chr20.bw`) and H3K27ac (`../data/H1.ESC.H3K27ac.chr20.bw`) ChIP-seq enrichment data in the data folder and create heatmaps and average signal profiles for regions around the TSSes.
 
 ## 
-Visualize one of the regions using `Gviz` functions. You should visualize both H3K4me3 and H3K27ac and the gene models.
+Visualize one of the -500,+500 bp regions around TSS using `Gviz` functions. You should visualize both H3K4me3 and H3K27ac and the gene models.

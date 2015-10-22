@@ -132,11 +132,11 @@ img {
 </div>
 <div id="section-1" class="section level2">
 <h2><span class="header-section-number">2.2</span> </h2>
-<p>Import mouse (mm9 assembly) CpG islands and refseq genes from UCSC browser as GRanges objects using rtracklayer functions.</p>
+<p>Import mouse (mm9 assembly) CpG islands and refseq transcripts from UCSC browser as <code>GRanges</code> objects using <code>rtracklayer</code> functions. HINT: Check the lecture material and modify the code there as necessary.</p>
 </div>
 <div id="section-2" class="section level2">
 <h2><span class="header-section-number">2.3</span> </h2>
-<p>Get promoters of refseq genes and calculate what percentage of them overlap with CpG islands.</p>
+<p>Following from the exercise above, get the promoters of Refseq transcripts (-1000bp and +1000 bp of the TSS) and calculate what percentage of them overlap with CpG islands. HINT: You have to get the promoter coordinates and use <code>findOverlaps()</code> or <code>subsetByOverlaps()</code> from <code>GenomicRanges</code> package.</p>
 </div>
 <div id="section-3" class="section level2">
 <h2><span class="header-section-number">2.4</span> </h2>
@@ -144,21 +144,21 @@ img {
 </div>
 <div id="section-4" class="section level2">
 <h2><span class="header-section-number">2.5</span> </h2>
-<p>Get canonical peaks for SP1 (peaks that are in both replicates) on chr21.Peaks for each replicate are located in “wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz” and “wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep2.broadPeak.gz” files.</p>
+<p>Get canonical peaks for SP1 (peaks that are in both replicates) on chr21. Peaks for each replicate are located in <code>../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep1.broadPeak.gz</code> and <code>../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xPkRep2.broadPeak.gz</code> files. HINT: You need to use <code>findOverlaps()</code> or <code>subsetByOverlaps()</code> to get the subset of peaks that occur in both replicates. EXTRA credit: use <code>coverage()</code> and slice<code>()</code> functions to get canonical peaks.</p>
 </div>
 </div>
 <div id="dealing-with-mapped-high-throughput-sequencing-reads" class="section level1">
 <h1><span class="header-section-number">3</span> Dealing with mapped high-throughput sequencing reads</h1>
 <div id="section-5" class="section level2">
 <h2><span class="header-section-number">3.1</span> </h2>
-<p>Count the reads overlapping with canonical Sp1 peaks using the BAM file for one of the replicates: “wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam”.</p>
+<p>Count the reads overlapping with canonical Sp1 peaks using the BAM file for one of the replicates: <code>../data/wgEncodeHaibTfbsGm12878Sp1Pcr1xAlnRep1.chr21.bam</code>. HINT: Use functions from <code>GenomicAlignemnts</code>, see lecture notes.</p>
 </div>
 </div>
 <div id="dealing-with-contiguous-scores-over-the-genome" class="section level1">
 <h1><span class="header-section-number">4</span> Dealing with contiguous scores over the genome</h1>
 <div id="section-6" class="section level2">
 <h2><span class="header-section-number">4.1</span> </h2>
-<p>Extract Views object for the promoters on chr20 from “H1.ESC.H3K4me1.chr20.bw” file. Plot the first “View” as a line plot.</p>
+<p>Extract Views object for the promoters on chr20 from <code>../data/H1.ESC.H3K4me1.chr20.bw</code> file. Plot the first “View” as a line plot. HINT: see lecture <a href="../lectures/genomicIntervalsTutorial.html">notes</a>, adapt the code from there.</p>
 </div>
 <div id="section-7" class="section level2">
 <h2><span class="header-section-number">4.2</span> </h2>
