@@ -1,0 +1,78 @@
+
+(Collected from https://beta.etherpad.org/p/compgen_RNAseq)
+
+Welcome to the RNA-seq day.  We will collect notes/links/questions/etc. here.
+
+
+Data in VMs
+~/compgen2015/RNAseq/compgen_demo
+
+
+--------------  BRAINSTORM SESSION -------------------
+
+1. Differential gene expression analysis.
+Slideshow from Michael Huss, Stockholm University
+http://www.slideshare.net/mikaelhuss/rnaseq-differential-expression-analysis
+
+DE expression analysis:
+http://www.mi.fu-berlin.de/wiki/pub/ABI/GenomicsLecture13Materials/rnaseq2.pdf
+
+Related analyses: Clustering, GO term analysis (GREAT), pathway analyses
+
+
+2. Differential splicing
+RNAseq for alternative RNA processing review
+http://ac.els-cdn.com/S0168952515000025/1-s2.0-S0168952515000025-main.pdf?_tid=43dd3204-7894-11e5-af1d-00000aab0f02&acdnat=1445501569_869b0c8062eec305ea9a25da9ce863ea
+http://ac.els-cdn.com/S0955067412000361/1-s2.0-S0955067412000361-main.pdf?_tid=1c17dc6e-7895-11e5-8dba-00000aab0f01&acdnat=1445501932_6d44fdfdb5b7fd213696fad1b2ffdc2f
+
+
+Group 3 - Allele Specific Expression RNA-seq:
+Reveiw: http://www.nature.com/nrg/journal/v11/n8/pdf/nrg2815.pdf
+Example Slide: http://www.angelmantoday.com/wp-content/uploads/2013/09/genetic-classes-of-as.jpg
+
+
+Group 4. RNA Editing
+- RADAR (http://rnaedit.com/about/)
+- Method with just RNAseq alone (needs population) http://www.nature.com/nmeth/journal/v10/n2/full/nmeth.2330.html
+- Interesting blog (http://www.rna-seqblog.com/?s=rna+editing)
+
+ Group 5: RNA-seq de novo transcriptome assembly and novel transcript discovery
+ •the study of transcriptomes forspecies without sequenced genomes
+Software tools:
+•Trinity -consistsof three independent software modules, which are used sequentially to produce transcripts: Inchworm, Chrysalis, Butterfly
+http://www.nature.com/nbt/journal/v29/n7/full/nbt.1883.html
+•Trans-ABySS– usedfor bacterial transcriptome assembly
+•Velvet/Oases
+•SOAPdenovo-Trans - designedfor assembling transcriptome withalternative splicing and different expression level
+•identification ofnovel transcripts, splicing forms andnon-coding 
+RNA - involves assembling novel transcripts inthe context of an existing annotation
+http://bioinformatics.oxfordjournals.org/content/27/17/2325.full
+
+6.expression quantitative trait loci
+
+http://rstb.royalsocietypublishing.org/content/368/1620/20120362
+Also, splicing/methylation/... quantitative trait loci: sQTL, mQTL, ..
+
+--------------  BRAINSTORM SESSION -------------------
+
+
+Various notes on several of the topics we discussed:
+
+1. Question about how to use formula notations in R: http://faculty.chicagobooth.edu/richard.hahn/teaching/FormulaNotation.pdf
+2. Where do you get the annotation from?  Ensembl: http://www.ensembl.org/info/data/ftp/index.html
+3. Functional category analysis that takes into account gene length bias: goseq package https://www.bioconductor.org/packages/release/bioc/vignettes/goseq/inst/doc/goseq.pdf
+4. Gene set enrichment analysis: great database of curated/etc. gene sets http://www.broadinstitute.org/gsea/msigdb/index.jsp
+5. Gene set enrichment analysis in a way that takes into account the correlation of genes within a gene set: http://nar.oxfordjournals.org/content/40/17/e133/F1.expansion.html
+6. Twitter discussion about the suitability of gene-level (union) counting: https://twitter.com/blahah404/status/656794679858479104
+7. Ballgown is a tool that corrects cuffdiff's statistics: http://www.nature.com/nbt/journal/v33/n3/full/nbt.3172.html?WT.ec_id=NBT-201503
+8. Clustering: recommend some kind of variance stabilizing transformation first, we often use the 'pheatmap' package
+9. Visualization of gene set tests: limma::barcodeplot ..
+10. Useful blogs about using kallisto:
+    https://cgatoxford.wordpress.com/2015/10/12/road-testing-kallisto/
+    http://nextgenseek.com/2015/05/kallisto-a-new-ultra-fast-rna-seq-quantitation-method/
+
+
+http://www.rna-seqblog.com/
+
+
+
